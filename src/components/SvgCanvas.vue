@@ -4,7 +4,7 @@
       v-if="svgType==='element'"
       ref="svgToResize"
       class="svg-element"
-      :style="'opacity: ' + getAttributeValue('svg_opacity') + ';'/* + getAttributeValue('svg_resizeBy')*/">
+      :style="'opacity: ' + getAttributeValue('svg_opacity')">
       <filter id="raggedFilter">
         <feDropShadow x="0" y="0" stdDeviation="3"></feDropShadow>
         <feTurbulence

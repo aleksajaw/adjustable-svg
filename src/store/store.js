@@ -8,6 +8,18 @@ const store = new Vuex.Store({
   state: {
     sliders: [
       {
+        id: "page_backgroundColor",
+        group: "page",
+        heading: "background",
+        subtitle: "color",
+        info: "Lorem Ipsum",
+        input: "",
+        format: "color",
+        opacity: false,
+        checked: true,
+        randomize: false
+      },
+      {
         id: "feTurbulance_baseFrequency",
         group: "filter",
         heading: "feTurbulance",
@@ -86,96 +98,6 @@ const store = new Vuex.Store({
         randomize: false
       },
       {
-        id: "svgElement_x",
-        group: "svg's element",
-        heading: "svg's element coordinates",
-        subtitle: "x",
-        info: "Lorem Ipsum",
-        input: {
-          min: -100,
-          max: 100,
-          step: 1,
-          value: 0
-        },
-        checked: true,
-        randomize: false,
-      },
-      {
-        id: "svgElement_y",
-        group: "svg's element",
-        heading: "svg's element coordinates",
-        subtitle: "y",
-        info: "Lorem Ipsum",
-        input: {
-          min: -100,
-          max: 100,
-          step: 1,
-          value: 0
-        },
-        checked: true,
-        randomize: false,
-      },
-      {
-        id: "svg_viewBoxX",
-        group: "svg viewBox",
-        heading: "svg viewBox",
-        subtitle: "x",
-        info: "Lorem Ipsum",
-        input: {
-          min: -100,
-          max: 100,
-          step: 1,
-          value: 0
-        },
-        checked: true,
-        randomize: false
-      },
-      {
-        id: "svg_viewBoxY",
-        group: "svg viewBox",
-        heading: "svg viewBox",
-        subtitle: "y",
-        info: "Lorem Ipsum",
-        input: {
-          min: -100,
-          max: 100,
-          step: 1,
-          value: 0
-        },
-        checked: true,
-        randomize: false
-      },
-      {
-        id: "svg_viewBoxWidth",
-        group: "svg viewBox",
-        heading: "svg viewBox",
-        subtitle: "width",
-        info: "Lorem Ipsum",
-        input: {
-          min: 1,
-          max: 100,
-          step: 1,
-          value: 0
-        },
-        checked: true,
-        randomize: false
-      },
-      {
-        id: "svg_viewBoxHeight",
-        group: "svg viewBox",
-        heading: "svg viewBox",
-        subtitle: "height",
-        info: "Lorem Ipsum",
-        input: {
-          min: 1,
-          max: 100,
-          step: 1,
-          value: 0
-        },
-        checked: true,
-        randomize: false
-      },
-      {
         id: "svgPattern_width",
         group: "svg's pattern",
         heading: "svg's pattern",
@@ -208,54 +130,6 @@ const store = new Vuex.Store({
         target: 'pattern'
       },
       {
-        id: "svgPattern_x",
-        group: "svg's pattern",
-        heading: "svg's pattern",
-        subtitle: "x",
-        info: "Lorem Ipsum",
-        input: {
-          min: -100,
-          max: 100,
-          step: 1,
-          value: 0
-        },
-        checked: true,
-        randomize: false,
-        target: 'pattern'
-      },
-      {
-        id: "svgPattern_y",
-        group: "svg's pattern",
-        heading: "svg's pattern",
-        subtitle: "y",
-        info: "Lorem Ipsum",
-        input: {
-          min: -100,
-          max: 100,
-          step: 1,
-          value: 0
-        },
-        checked: true,
-        randomize: false,
-        target: 'pattern'
-      },
-      /*{
-        id: "svg_resizeBy",
-        heading: "svg",
-        subtitle: "resize by",
-        info: "Lorem Ipsum",
-        resizeBy: "width",
-        input: {
-          min: 1,
-          max: 1000,
-          step: 1,
-          value: 1
-        },
-        format: "px",
-        checked: false,
-        randomize: false
-      },*/
-      {
         id: "svg_strokeWidth",
         group: "rest of svg",
         heading: "svg stroke",
@@ -279,6 +153,7 @@ const store = new Vuex.Store({
         info: "Lorem Ipsum",
         input: "",
         format: "color",
+        opacity: false,
         checked: true,
         randomize: false
       },
@@ -290,6 +165,7 @@ const store = new Vuex.Store({
         info: "Lorem Ipsum",
         input: "",
         format: "color",
+        opacity: false,
         checked: true,
         randomize: false
       },
@@ -307,17 +183,134 @@ const store = new Vuex.Store({
         },
         checked: true,
         randomize: false
-      }
+      },
+
+      {
+        id: "svg_viewBoxWidth",
+        group: "svg viewBox",
+        heading: "svg viewBox",
+        subtitle: "width",
+        info: "Lorem Ipsum",
+        input: {
+          min: 1,
+          max: 100,
+          step: 1,
+          value: 0
+        },
+        checked: true,
+        randomize: false
+      },
+      {
+        id: "svg_viewBoxHeight",
+        group: "svg viewBox",
+        heading: "svg viewBox",
+        subtitle: "height",
+        info: "Lorem Ipsum",
+        input: {
+          min: 1,
+          max: 100,
+          step: 1,
+          value: 0
+        },
+        checked: true,
+        randomize: false
+      },
+      {
+        id: "svgElement_x",
+        group: "coordinates",
+        heading: "svg's element coordinates",
+        subtitle: "x",
+        info: "Lorem Ipsum",
+        input: {
+          min: -100,
+          max: 100,
+          step: 1,
+          value: 0
+        },
+        checked: false,
+        randomize: false,
+      },
+      {
+        id: "svgElement_y",
+        group: "coordinates",
+        heading: "svg's element coordinates",
+        subtitle: "y",
+        info: "Lorem Ipsum",
+        input: {
+          min: -100,
+          max: 100,
+          step: 1,
+          value: 0
+        },
+        checked: false,
+        randomize: false,
+      },
+      {
+        id: "svg_viewBoxX",
+        group: "coordinates",
+        heading: "svg viewBox",
+        subtitle: "x",
+        info: "Lorem Ipsum",
+        input: {
+          min: -100,
+          max: 100,
+          step: 1,
+          value: 0
+        },
+        checked: false,
+        randomize: false
+      },
+      {
+        id: "svg_viewBoxY",
+        group: "coordinates",
+        heading: "svg viewBox",
+        subtitle: "y",
+        info: "Lorem Ipsum",
+        input: {
+          min: -100,
+          max: 100,
+          step: 1,
+          value: 0
+        },
+        checked: false,
+        randomize: false
+      },
+      {
+        id: "svgPattern_x",
+        group: "coordinates",
+        heading: "svg's pattern",
+        subtitle: "x",
+        info: "Lorem Ipsum",
+        input: {
+          min: -100,
+          max: 100,
+          step: 1,
+          value: 0
+        },
+        checked: false,
+        randomize: false,
+        target: 'pattern'
+      },
+      {
+        id: "svgPattern_y",
+        group: "coordinates",
+        heading: "svg's pattern",
+        subtitle: "y",
+        info: "Lorem Ipsum",
+        input: {
+          min: -100,
+          max: 100,
+          step: 1,
+          value: 0
+        },
+        checked: false,
+        randomize: false,
+        target: 'pattern'
+      },
     ],
     svgType: 'element'
   },
   getters: {
-    borderColor(state) {
-      return state.sliders.findIndex((slider) => slider.id === 'svg_strokeColor');
-    },
-    bgColor(state) {
-      return state.sliders.findIndex((slider) => slider.id === 'svg_fillColor');
-    },
     sliders(state) {
       return state.sliders;
     },
@@ -342,20 +335,10 @@ const store = new Vuex.Store({
     }
   },
   actions: {
-    setBorderColor({commit}, payload){
-      commit('SET_ATTR_VAL', ['svg_strokeColor', payload])
-    },
-
-    setBgColor({commit}, payload){
-      commit('SET_ATTR_VAL', ['svg_fillColor', payload])
-    },
-
     getAttributeValue({ state }, payload) {
       let wantedSlider = _.find(state.sliders, { id: payload });
       return typeof wantedSlider.input === "string"
         ? wantedSlider.input
-        : wantedSlider.resizeBy
-        ? wantedSlider.resizeBy + ':' + wantedSlider.input.value
         : wantedSlider.input.value;
     },
 
@@ -374,17 +357,17 @@ const store = new Vuex.Store({
       }
     },
 
-    getRandAttrCol({ state, dispatch }, payload) {
-      if (state.sliders.find((slider) => slider.id === payload).randomize) {
+    getRandAttrCol({ state, commit }, payload) {
+      let wantedSlider = state.sliders.find((slider) => slider.id === payload)
+      if (wantedSlider.randomize) {
         let r = Math.floor(Math.random() * 256),
           g = Math.floor(Math.random() * 256),
           b = Math.floor(Math.random() * 256),
-          a = Math.random() * 1 + 0.01;
+          a = wantedSlider.opacity ? Math.random() * 1 + 0.01 : 1;
         if (a < 1) a = a.toFixed(2);
         else a = Math.floor(a);
         let color = "rgba(" + r + "," + g + "," + b + "," + a + ")";
-        if (payload === "svg_strokeColor") dispatch('setBorderColor', color);
-        else dispatch('setBgColor', color);
+        commit('SET_ATTR_VAL', [payload, color])
       }
     },
 
@@ -394,7 +377,8 @@ const store = new Vuex.Store({
       })
     },
 
-    setDefault({ commit, dispatch }) {
+    setDefault({ commit }) {
+      commit("SET_ATTR_VAL", ["page_backgroundColor", '#cacaca']);
       commit("SET_ATTR_VAL", ["feTurbulance_baseFrequency", 0.01]);
       commit("SET_ATTR_VAL", ["feTurbulance_numOctaves", 20]);
       commit("SET_ATTR_VAL", ["feDisplacementMap_scale", 30]);
@@ -402,36 +386,23 @@ const store = new Vuex.Store({
       commit("SET_ATTR_VAL", ["svgElement_width", 200]);
       commit("SET_ATTR_VAL", ["svg_viewBoxHeight", 30]);
       commit("SET_ATTR_VAL", ["svg_viewBoxWidth", 200]);
-      //commit("SET_ATTR_VAL", ["svg_resizeBy", 0]);
-      commit("SET_ATTR_VAL", ["svg_strokeWidth", 2]);
-      dispatch("setBorderColor", "rgba(94, 102, 186, 1)");
-      commit("SET_ATTR_VAL", ["svg_strokeColor", "rgba(94, 102, 186, 1)"]);
-      dispatch("setBgColor", "rgba(213, 226, 207, 1)");
-      commit("SET_ATTR_VAL", ["svg_fillColor", "rgba(213, 226, 207, 1)"]);
+      commit('SET_ATTR_VAL', ['svg_fillColor', "rgba(94, 102, 186, 1)"]);
+      commit("SET_ATTR_VAL", ["svg_strokeColor", "rgba(94, 150, 200, 1)"]);
+      commit("SET_ATTR_VAL", ["svg_strokeWidth", 1]);
     },
 
-    setRandomValues({ dispatch }) {
-      dispatch("getRandAttrNum", "feTurbulance_baseFrequency");
-      dispatch("getRandAttrNum", "feTurbulance_numOctaves");
-      dispatch("getRandAttrNum", "feDisplacementMap_scale");
-      dispatch("getRandAttrNum", "svgElement_height");
-      dispatch("getRandAttrNum", "svgElement_width");
-      dispatch("getRandAttrNum", "svgElement_x");
-      dispatch("getRandAttrNum", "svgElement_y");
-      dispatch("getRandAttrNum", "svg_viewBoxHeight");
-      dispatch("getRandAttrNum", "svg_viewBoxWidth");
-      dispatch("getRandAttrNum", "svg_viewBoxY");
-      dispatch("getRandAttrNum", "svg_viewBoxX");
-      dispatch("getRandAttrNum", "svgPattern_x");
-      dispatch("getRandAttrNum", "svgPattern_y");
-      dispatch("getRandAttrNum", "svg_strokeWidth");
-      dispatch("getRandAttrCol", "svg_strokeColor");
-      dispatch("getRandAttrCol", "svg_fillColor");
-      dispatch("getRandAttrNum", "svg_opacity");
+    setRandomValues({ state, dispatch }) {
+      state.sliders.forEach(slider => {
+        if(slider.format === 'color'){
+          dispatch("getRandAttrCol", slider.id);
+        } else {
+          dispatch("getRandAttrNum", slider.id);
+        }
+      })
     },
 
     setRandomValuesAndSelectiveUse({dispatch}){
-      //dispatch("getRandAttrsChecked")
+      dispatch("getRandAttrsChecked")
       dispatch("setRandomValues")
     }
   }

@@ -19,7 +19,7 @@
 import VueColor from "vue-color";
 let vueColorChrome = VueColor.Chrome;
 
-import { mapActions } from 'vuex'
+import { mapMutations } from 'vuex'
 
 export default {
   name: "ColorPicker",
@@ -27,7 +27,7 @@ export default {
     picker: vueColorChrome
   },
   props: {
-    subtitle: String,
+    id: String,
     checked: Boolean,
     color: String
   },
@@ -38,10 +38,10 @@ export default {
     };
   },
   mounted() {
-    //this.updateFromPicker(this.color || "#000000");
+    this.updateFromPicker(this.color || "rgba(0,0,0,1)");
   },
   methods: {
-    ...mapActions(['setBgColor', 'setBorderColor']),
+    ...mapMutations(['SET_ATTR_VAL']),
     
     reverseChecked(text = false) {
       this.$emit("reverseChecked", text);
@@ -50,8 +50,7 @@ export default {
       this.chosenColor = c;
     },
     sendColor(c) {
-      if (this.subtitle == "fill color") this.setBgColor(c);
-      else this.setBorderColor(c);
+      this.SET_ATTR_VAL([this.id, c])
     },
     convertColor(c) {
       return (

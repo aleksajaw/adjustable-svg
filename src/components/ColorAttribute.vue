@@ -6,7 +6,7 @@
       :color="attr.input"
       :checked="attr.checked"
       @reverseChecked="reverseChecked"
-      :subtitle="attr.subtitle"
+      :id="attr.id"
     />
 
     <p class="sliders__attr-description">
@@ -21,6 +21,10 @@
         v-model="colorValue"
         @click="reverseChecked()"
       >
+    </p>
+    <p class="sliders__attr-description">
+      <input class="sliders__attr--checkbox" type="checkbox" v-model="attr.opacity">
+      <span>opacity</span>
     </p>
   </div>
 </template>

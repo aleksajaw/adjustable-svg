@@ -60,7 +60,6 @@
   @include disabled
 }
 #app{
-  background-color:#f8f8f8;
   padding:40px 40px 0;
   font-family: 'Roboto Condensed', sans-serif;
   min-height:100vh;
@@ -80,7 +79,7 @@
   @include alignCenter;
   margin-bottom: 20px;
   position: relative;
-  height: 60px;
+  padding:10px 0;
   
   &__title{
     @include alignCenter;
@@ -100,9 +99,30 @@
     }*/
   }
 }
-.container{
+.app-container{
+  position:relative
+}
+.main-container{
   max-width: 2200px;
   margin: 0 auto 20px;
+}
+.slide{
+  &__checkbox {
+    margin:-1px 10px 0 0;
+    cursor:pointer;
+    &--randomize{
+      @include rainbow;
+    }
+    &:checked, &--randomize:checked{
+      &:after {
+        content: '\f14a';
+      }
+    }
+    &:after, &--randomize:after {
+      @include awesomeIcon('\f0c8');
+      font-size: 18px;
+    }
+  }
 }
 .sliders{
   padding:0 20px;
@@ -112,9 +132,7 @@
   flex-wrap: wrap;
   justify-content: flex-end;
   &__group-main-container{
-    padding: 25px 10px;
-    border: solid #000;
-    border-width: 0 0 2px;
+    padding: 70px 3%;
     margin: 0;
     width: 100%;
   }
@@ -123,9 +141,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
+    width:fit-content;
   }
   &__group-container-title{
-
+    text-transform: capitalize;
+    text-align:left;
+    padding-left:4vw
   }
   &__attr{
     margin:12px;
@@ -137,10 +158,8 @@
       height: 9px;
       border-radius: 5px;
       opacity:0.7;
-      -webkit-transition: .2s;
       transition: opacity .2s;
       cursor:ew-resize;
-      box-shadow: 0 0 2px #777;
       border:1px solid;
       &::-webkit-slider-thumb {
         @include thumb;
@@ -158,6 +177,7 @@
       margin-top: 6px;
       height:11px;
       border-color:#e5e5e5;
+      border: 1px solid rgb(0 0 0 / 55%);
       cursor:pointer!important;
     }
     &--color-text{
@@ -185,32 +205,11 @@
     &--select{
       @include inputStyle
     }
-    &--info{
-      @include alignCenter;
-      justify-content: center;
-      position: absolute;
-      bottom: 0;
-      right: -1px;
-      left: -1px;
-      background: #fefefe;
-      height: calc(100% + 5px);
-      z-index: 100;
-      transition: 1s 0.5s cubic-bezier(1, 0.35, 0.45, 1.19);
-      text-align: left;
-      font-style: italic;
-      transform: translate3d(-50%, 40px, 0) scale(0);
-      padding: 7px 9px;
-      border: solid #e5e5e5;
-      border-width: 1px 1px 0;
-      opacity: 0;
-      color: #272727;
-      cursor:help;
-    }
   }
   &__attr-heading{
     letter-spacing:1px;
     margin: 1px 29px;
-    height:19.5px
+    min-height:19.5px
   }
   .fas{
     font-weight: 100;
@@ -244,9 +243,11 @@
         cursor:pointer;
       }
     }
+    >span{
+      @include alignCenter;
+    }
   }
   &__attr-description-span{
-      @include alignCenter;
       &:after{
         content: ':';
         margin-left: 3px;
@@ -345,10 +346,9 @@ footer{
     width: 100%;
     max-width:75vw;
     padding: 90px;
-    background: #fcfcfc;
-    border: 2px dashed #e5e5e5;
-    overflow-x:scroll;
-    position:relative
+    border: 4px dashed #fff;
+    position:relative;
+    box-shadow: 0 0 15px rgb(0 0 0 / 0.1);
   }
 }
 .sliders-svg-options, .sliders-svg-options{
@@ -396,14 +396,6 @@ footer{
 .svg-element{
   margin-top:30px;
   filter: drop-shadow(0 -3px 8px rgba(0, 0, 0, 0.1));
-}
-@media only screen and (min-width:2047px){
-  footer{left: 0;
-         right: 0;
-         bottom: 0;
-         position: absolute;
-         svg{min-width:50vh}
-        }
 }
 @media only screen and (max-width:1025px){
   .sliders{ margin:0 auto;

@@ -1,12 +1,7 @@
 <template>
   <div class="sliders__attr" v-if="showSlider">
     <h4 class="sliders__attr-heading">{{ attr.heading }}</h4>
-
-    <i class="sliders__attr--question fas fa-question-circle"></i>
-
-    <div class="sliders__attr--info">
-      <div>{{ attr.info }}</div>
-    </div>
+    
     <template>
       <StandardAttribute :slider="attr" v-if="attr.format != 'color'"/>
       <ColorAttribute :attr="attr" v-else/>
