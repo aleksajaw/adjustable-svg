@@ -96,7 +96,15 @@
 
       </div>
     </div>
-    
+
+    <div class="save">
+      <div v-if="showSaveMsg" class="save__message">
+        Save preset as:
+        <input type="text">
+      </div>
+      <span class="save__icon" @click="showSaveMsg=!showSaveMsg"></span>
+    </div>
+  
   </div>
 </template>
 
@@ -119,6 +127,11 @@ export default {
     SettingsAttribute,
     SvgCanvas,
     Sidebar,
+  },
+  data(){
+    return{
+      showSaveMsg: false
+    }
   },
   computed: {
     ...mapGetters(["sliders", "svgType"]),

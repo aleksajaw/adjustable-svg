@@ -104,7 +104,7 @@ export default {
 }
 .arrow{
   position:absolute;
-  right: 0;
+  right: 8px;
   left: 0;
   margin: auto;
   padding-right:15px;
@@ -140,7 +140,7 @@ export default {
   margin:0 auto;
   list-style-type:none;
   overflow-y:scroll;
-  box-shadow: inset 0 0 30px #00000070;
+  box-shadow: inset 0px -3px 10px 0px rgba(0, 0, 0, 0.25);
   &::-webkit-scrollbar {
     width:0
   }
