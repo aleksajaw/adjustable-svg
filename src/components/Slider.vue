@@ -28,14 +28,14 @@ export default {
   mounted(){
     this.scrollStarted = false
     this.lastScrollTop = document.getElementById('slider').scrollTop
-    this.sliderHeight = _.max(this.slides.map(slide => {
-      return slide.elm.getBoundingClientRect().height.toFixed(3) * 1
-    }))
+    this.sliderHeight = Math.ceil(_.max(this.slides.map(slide => {
+      return slide.elm.getBoundingClientRect().height
+    })))
     this.slides.forEach(slide => {
       this.numberOfSlides++;
       let el = slide.elm
       el.className = "slide-" + this.numberOfSlides;
-      el.children[0].style.height = this.sliderHeight + 'px';
+      el.style.height = this.sliderHeight + 'px';
     })
     this.slides[0].elm.classList.add('current-slide')
     document.getElementById('slider').addEventListener('scroll', this.handleScroll)
@@ -54,23 +54,30 @@ export default {
             x: false,
             y: true
           },
-        st = document.getElementById('slider').scrollTop.toFixed(3)*1,
+        st = Math.ceil(document.getElementById('slider').scrollTop),
         scrollToSlideNo = 0,
-        earlierSlide = this.active-1
+        earlierSlide = this.active-1,
+        bug = (this.numberOfSlides-1) * this.sliderHeight < this.lastScrollTop
 
       this.down = (st > this.lastScrollTop) ? true : false
       this.lastScrollTop = st
 
+      if(bug) this.scrollStarted = true
+      
       if (!this.scrollStarted) {
         this.scrollStarted = true
         scrollToSlideNo = (this.down) ? this.active+1 : this.active-1
-        if(scrollToSlideNo <= this.numberOfSlides){
+        if(scrollToSlideNo <= this.numberOfSlides && scrollToSlideNo > 0){
           VueScrollTo.scrollTo('.slide-' + scrollToSlideNo, 500, options)
           this.slides[scrollToSlideNo-1].elm.classList.add('current-slide')
           this.slides[earlierSlide].elm.classList.remove('current-slide')
         }
       }
-      if((this.numberOfSlides-1) * this.sliderHeight < this.lastScrollTop) this.scrollStarted = false
+
+      if(bug) this.scrollStarted = false
+      // use the two 'if' functions with the bug statement is the only way I found to fix the problem
+      // with the strange infinite scrolling or sudden stop working vue-scrollto
+      // the cause is the last element sometimes get extra pixels of height (but HTML doesn't show it)
     }
   }
 }
@@ -140,7 +147,7 @@ export default {
   margin:0 auto;
   list-style-type:none;
   overflow-y:scroll;
-  box-shadow: inset 0px -3px 10px 0px rgba(0, 0, 0, 0.25);
+  box-shadow:inset 1px -5px 5px 0px rgba(0, 0, 0, 0.2);
   &::-webkit-scrollbar {
     width:0
   }

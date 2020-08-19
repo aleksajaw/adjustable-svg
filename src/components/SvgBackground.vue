@@ -4,7 +4,7 @@
     ref="svgToResize"
     :viewBox="svgViewBox"
     class="svg-background"
-    :style="'opacity: ' + getAttributeValue('svg_opacity') + ';'/* + getAttributeValue('svg_resizeBy')*/"
+    :style="'opacity: ' + getAttributeValue('svg_opacity')"
   >
     <defs>
       <pattern
