@@ -256,6 +256,9 @@
       }
     }
 }
+label{
+  cursor:pointer
+}
 .sidebar{
   @include alignCenter;
   cursor:default;

@@ -1,52 +1,51 @@
 <template>
   <div>
     <input
-      class="sliders__attr--range"
       type="range"
       :style="style"
-      :class="{'disabled': !slider.checked}"
+      :class="['sliders__attr--range', {'disabled': !slider.checked}]"
       :min="slider.input.min"
       :max="slider.input.max"
       :step="slider.input.step"
-      @click="reverseChecked()"
+      @click="optReverseChecked"
       v-model="slider.input.value"
     >
 
     <p class="sliders__attr-description">
-      <input class="sliders__attr--checkbox" type="checkbox" v-model="slider.checked" :title="'Is ' + slider.subtitle + ' value of the ' + slider.heading + ' used?'">
+      <input
+        :id="`${slider.id}-checkbox`" 
+        class="sliders__attr--checkbox"
+        type="checkbox"
+        v-model="slider.checked"
+        :title="'Is ' + slider.subtitle + ' value of the ' + slider.heading + ' used?'"
+      >
       
-      <span class="sliders__attr-description-span" @click="reverseChecked(true)">
-        {{ slider.subtitle }}
-        <select
-          class="sliders__attr--select"
-          v-if="slider.id == 'svg_resizeBy'"
-          v-model="slider.resizeBy"
-          :class="{'disabled': !slider.checked}"
-        >
-          <option>width</option>
-          <option>height</option>
-        </select>
-      </span>
+      <label :for="`${slider.id}-checkbox`">
+        <span class="sliders__attr-description-span">
+          {{ slider.subtitle }}
+        </span>
+      </label>
       
       <input
-        class="sliders__attr-description--value"
         type="number"
         :step="slider.input.step"
-        :class="{'disabled': !slider.checked}"
+        :class="['sliders__attr-description--value', {'disabled': !slider.checked}]"
         v-model="attrValue"
-        @click="reverseChecked()"
+        @click="optReverseChecked"
       >
       
       <span
         v-if="slider.format == 'px'"
         :class="{'disabled':!slider.checked}"
-        @click="reverseChecked(true)"
+        @click="optReverseChecked"
       >px</span>
     </p>
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   name: "StandardAttribute",
   props: {
@@ -75,13 +74,9 @@ export default {
     }
   },
   methods: {
-    reverseChecked(text = false) {
-      !text
-        ? this.slider.checked
-          ? (text = false)
-          : (text = true)
-        : (text = true);
-      if (text) this.slider.checked = !this.slider.checked;
+    ...mapMutations(['SET_ATTR_CHECKED']),
+    optReverseChecked(){
+      if(!this.slider.checked) this.SET_ATTR_CHECKED([this.slider.id, true])
     }
   }
 };

@@ -316,7 +316,13 @@ const store = new Vuex.Store({
     },
     svgType(state){
       return state.svgType
-    }
+    },
+    borderColor(state) {
+      return _.find(state.sliders, { id: 'svg_strokeColor' }).input;
+    },
+    bgColor(state) {
+      return _.find(state.sliders, { id: 'svg_fillColor' }).input;
+    },
   },
   mutations: {
     SET_ATTR_VAL(state, payload) {
@@ -335,13 +341,6 @@ const store = new Vuex.Store({
     }
   },
   actions: {
-    getAttributeValue({ state }, payload) {
-      let wantedSlider = _.find(state.sliders, { id: payload });
-      return typeof wantedSlider.input === "string"
-        ? wantedSlider.input
-        : wantedSlider.input.value;
-    },
-
     isChecked({state}, payload){
       return _.find(state.sliders, { id: payload }).checked
     },
@@ -373,7 +372,9 @@ const store = new Vuex.Store({
 
     getRandAttrsChecked({state,commit}){
       state.sliders.forEach(slider => {
-        if(slider.randomize && slider.subtitle !== 'height' && slider.subtitle !== 'width') commit('SET_ATTR_CHECKED', [slider.id, _.sample([true, false])])
+        if(slider.randomize && slider.subtitle !== 'height' && slider.subtitle !== 'width'){
+          commit('SET_ATTR_CHECKED', [slider.id, _.sample([true, false])])
+        }
       })
     },
 

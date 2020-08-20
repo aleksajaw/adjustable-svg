@@ -1,36 +1,49 @@
  <template>
   <div>
     <ColorPicker
+      :id="attr.id"
       :class="{'disabled': !attr.checked}"
       v-model="attr.input"
       :color="attr.input"
       :checked="attr.checked"
-      @reverseChecked="reverseChecked"
-      :id="attr.id"
+      @click="optReverseChecked"
     />
 
     <p class="sliders__attr-description">
-      <input class="sliders__attr--checkbox" type="checkbox" v-model="attr.checked">
-      
-      <span class="sliders__attr-description-span" @click="reverseChecked(true)">{{ attr.subtitle }}</span>
-      
       <input
-        class="sliders__attr--color-text"
+        class="sliders__attr--checkbox"
+        :id="`${attr.id}-checkbox`"
+        type="checkbox"
+        v-model="attr.checked"
+      >
+      
+      <label :for="`${attr.id}-checkbox`">
+        <span class="sliders__attr-description-span">{{ attr.subtitle }}</span>
+      </label>
+
+      <input
         type="text"
-        :class="{'disabled':!attr.checked}"
+        :class="['sliders__attr--color-text', {'disabled':!attr.checked}]"
         v-model="colorValue"
-        @click="reverseChecked()"
       >
     </p>
-    <p class="sliders__attr-description">
-      <input class="sliders__attr--checkbox" type="checkbox" v-model="attr.opacity">
-      <span>opacity</span>
+    <p :class="['sliders__attr-description', {'disabled':!attr.checked}]">
+      <input
+        :id="`${attr.id}-opacity`"
+        class="sliders__attr--checkbox"
+        type="checkbox"
+        v-model="attr.opacity"
+      >
+      <label :for="`${attr.id}-opacity`">
+        <span>opacity</span>
+        </label>
     </p>
   </div>
 </template>
 
 <script>
 import ColorPicker from "./ColorPicker";
+import { mapMutations} from 'vuex'
 
 export default {
   name: "ColorAttribute",
@@ -46,13 +59,9 @@ export default {
     };
   },
   methods: {
-    reverseChecked(text = false) {
-      !text
-        ? this.attr.checked
-          ? (text = false)
-          : (text = true)
-        : (text = true);
-      if (text) this.attr.checked = !this.attr.checked;
+    ...mapMutations(['SET_ATTR_CHECKED']),
+    optReverseChecked(){
+      if(!this.attr.checked) this.SET_ATTR_CHECKED([this.attr.id, true])
     }
   },
   watch: {

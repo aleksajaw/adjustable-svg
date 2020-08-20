@@ -1,5 +1,5 @@
 <template>
-  <div class="sliders__attr--color-picker-container" @click="reverseChecked()">
+  <div class="sliders__attr--color-picker-container" @click="$emit('click')">
     <div
       @click="showPicker=!showPicker"
       :style="{background: color }"
@@ -8,7 +8,6 @@
     <picker
       v-if="showPicker"
       @input="updateFromPicker"
-      @click="reverseChecked(true)"
       :value="chosenColor"
       class="sliders__attr--picker"
     />
@@ -43,9 +42,6 @@ export default {
   methods: {
     ...mapMutations(['SET_ATTR_VAL']),
     
-    reverseChecked(text = false) {
-      this.$emit("reverseChecked", text);
-    },
     updateFromPicker(c) {
       this.chosenColor = c;
     },
