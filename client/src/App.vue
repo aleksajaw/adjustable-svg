@@ -117,6 +117,7 @@ import SvgCanvas from "./components/SvgCanvas.vue";
 import Sidebar from "./components/Sidebar.vue";
 import { mapGetters, mapMutations, mapActions } from "vuex";
 import _ from 'lodash'
+//import axios from 'axios'
 
 export default {
   name: "App",
@@ -144,7 +145,7 @@ export default {
       }
     },
   },
-  mounted(){
+  async mounted(){
     this.setDefault()
   },
   methods:{
