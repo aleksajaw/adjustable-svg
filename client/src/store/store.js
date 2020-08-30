@@ -8,11 +8,10 @@ const store = new Vuex.Store({
   state: {
     sliders: [
       {
-        id: "page_backgroundColor",
+        name: "page_backgroundColor",
         group: "page",
         heading: "background",
         subtitle: "color",
-        info: "Lorem Ipsum",
         input: "",
         format: "color",
         opacity: false,
@@ -20,12 +19,10 @@ const store = new Vuex.Store({
         randomize: false
       },
       {
-        id: "feTurbulance_baseFrequency",
+        name: "feTurbulance_baseFrequency",
         group: "filter",
         heading: "feTurbulance",
         subtitle: "baseFrequency",
-        info:
-          "ViewBox width value scales the content of svg along the axis x. Scales down for < 1 or up for 1 > result of svg_w/viewBox_w",
         input: {
           min: 0.0,
           max: 5,
@@ -36,11 +33,10 @@ const store = new Vuex.Store({
         randomize: false
       },
       {
-        id: "feTurbulance_numOctaves",
+        name: "feTurbulance_numOctaves",
         group: "filter",
         heading: "feTurbulance",
         subtitle: "numOctaves",
-        info: "Lorem Ipsum",
         input: {
           min: 0,
           max: 20,
@@ -51,11 +47,10 @@ const store = new Vuex.Store({
         randomize: false
       },
       {
-        id: "feDisplacementMap_scale",
+        name: "feDisplacementMap_scale",
         group: "filter",
         heading: "feDisplacementMap",
         subtitle: "scale",
-        info: "Lorem Ipsum",
         input: {
           min: 0,
           max: 100,
@@ -66,11 +61,10 @@ const store = new Vuex.Store({
         randomize: false
       },
       {
-        id: "svgElement_width",
+        name: "svgElement_width",
         group: "svg's element",
         heading: "svg's element",
         subtitle: "width",
-        info: "Lorem Ipsum",
         input: {
           min: 1,
           max: 1000,
@@ -82,11 +76,10 @@ const store = new Vuex.Store({
         randomize: false
       },
       {
-        id: "svgElement_height",
+        name: "svgElement_height",
         group: "svg's element",
         heading: "svg's element",
         subtitle: "height",
-        info: "Lorem Ipsum",
         input: {
           min: 1,
           max: 1000,
@@ -98,11 +91,10 @@ const store = new Vuex.Store({
         randomize: false
       },
       {
-        id: "svgPattern_width",
+        name: "svgPattern_width",
         group: "svg's pattern",
         heading: "svg's pattern",
         subtitle: "width",
-        info: "Lorem Ipsum",
         input: {
           min: 1,
           max: 100,
@@ -114,11 +106,10 @@ const store = new Vuex.Store({
         target: 'pattern'
       },
       {
-        id: "svgPattern_height",
+        name: "svgPattern_height",
         group: "svg's pattern",
         heading: "svg's pattern",
         subtitle: "height",
-        info: "Lorem Ipsum",
         input: {
           min: 1,
           max: 100,
@@ -130,11 +121,10 @@ const store = new Vuex.Store({
         target: 'pattern'
       },
       {
-        id: "svg_strokeWidth",
+        name: "svg_strokeWidth",
         group: "rest of svg",
         heading: "svg stroke",
         subtitle: "width",
-        info: "Lorem Ipsum",
         input: {
           min: 1,
           max: 100,
@@ -146,11 +136,10 @@ const store = new Vuex.Store({
         randomize: false
       },
       {
-        id: "svg_strokeColor",
+        name: "svg_strokeColor",
         group: "rest of svg",
         heading: "svg stroke",
         subtitle: "color",
-        info: "Lorem Ipsum",
         input: "",
         format: "color",
         opacity: false,
@@ -158,11 +147,10 @@ const store = new Vuex.Store({
         randomize: false
       },
       {
-        id: "svg_fillColor",
+        name: "svg_fillColor",
         group: "rest of svg",
         heading: "svg fill",
         subtitle: "color",
-        info: "Lorem Ipsum",
         input: "",
         format: "color",
         opacity: false,
@@ -170,11 +158,10 @@ const store = new Vuex.Store({
         randomize: false
       },
       {
-        id: "svg_opacity",
+        name: "svg_opacity",
         group: "rest of svg",
         heading: "svg",
         subtitle: "opacity",
-        info: "Lorem Ipsum",
         input: {
           min: 0.01,
           max: 1,
@@ -186,11 +173,10 @@ const store = new Vuex.Store({
       },
 
       {
-        id: "svg_viewBoxWidth",
+        name: "svg_viewBoxWidth",
         group: "svg viewBox",
         heading: "svg viewBox",
         subtitle: "width",
-        info: "Lorem Ipsum",
         input: {
           min: 1,
           max: 100,
@@ -201,11 +187,10 @@ const store = new Vuex.Store({
         randomize: false
       },
       {
-        id: "svg_viewBoxHeight",
+        name: "svg_viewBoxHeight",
         group: "svg viewBox",
         heading: "svg viewBox",
         subtitle: "height",
-        info: "Lorem Ipsum",
         input: {
           min: 1,
           max: 100,
@@ -216,11 +201,10 @@ const store = new Vuex.Store({
         randomize: false
       },
       {
-        id: "svgElement_x",
+        name: "svgElement_x",
         group: "coordinates",
         heading: "svg's element coordinates",
         subtitle: "x",
-        info: "Lorem Ipsum",
         input: {
           min: -100,
           max: 100,
@@ -231,11 +215,10 @@ const store = new Vuex.Store({
         randomize: false,
       },
       {
-        id: "svgElement_y",
+        name: "svgElement_y",
         group: "coordinates",
         heading: "svg's element coordinates",
         subtitle: "y",
-        info: "Lorem Ipsum",
         input: {
           min: -100,
           max: 100,
@@ -246,11 +229,10 @@ const store = new Vuex.Store({
         randomize: false,
       },
       {
-        id: "svg_viewBoxX",
+        name: "svg_viewBoxX",
         group: "coordinates",
         heading: "svg viewBox",
         subtitle: "x",
-        info: "Lorem Ipsum",
         input: {
           min: -100,
           max: 100,
@@ -261,11 +243,10 @@ const store = new Vuex.Store({
         randomize: false
       },
       {
-        id: "svg_viewBoxY",
+        name: "svg_viewBoxY",
         group: "coordinates",
         heading: "svg viewBox",
         subtitle: "y",
-        info: "Lorem Ipsum",
         input: {
           min: -100,
           max: 100,
@@ -276,11 +257,10 @@ const store = new Vuex.Store({
         randomize: false
       },
       {
-        id: "svgPattern_x",
+        name: "svgPattern_x",
         group: "coordinates",
         heading: "svg's pattern",
         subtitle: "x",
-        info: "Lorem Ipsum",
         input: {
           min: -100,
           max: 100,
@@ -292,11 +272,10 @@ const store = new Vuex.Store({
         target: 'pattern'
       },
       {
-        id: "svgPattern_y",
+        name: "svgPattern_y",
         group: "coordinates",
         heading: "svg's pattern",
         subtitle: "y",
-        info: "Lorem Ipsum",
         input: {
           min: -100,
           max: 100,
@@ -318,22 +297,22 @@ const store = new Vuex.Store({
       return state.svgType
     },
     borderColor(state) {
-      return _.find(state.sliders, { id: 'svg_strokeColor' }).input;
+      return _.find(state.sliders, { name: 'svg_strokeColor' }).input;
     },
     bgColor(state) {
-      return _.find(state.sliders, { id: 'svg_fillColor' }).input;
+      return _.find(state.sliders, { name: 'svg_fillColor' }).input;
     },
   },
   mutations: {
     SET_ATTR_VAL(state, payload) {
-      let i = state.sliders.findIndex((slider) => slider.id === payload[0]);
+      let i = state.sliders.findIndex((slider) => slider.name === payload[0]);
       if (typeof payload[1] === "number")
         state.sliders[i].input.value = payload[1];
       else state.sliders[i].input = payload[1];
     },
 
     SET_ATTR_CHECKED(state, payload){
-      state.sliders.find((slider) => slider.id === payload[0]).checked = payload[1]
+      state.sliders.find((slider) => slider.name === payload[0]).checked = payload[1]
     },
 
     SET_SVG_TYPE(state, payload){
@@ -342,11 +321,11 @@ const store = new Vuex.Store({
   },
   actions: {
     isChecked({state}, payload){
-      return _.find(state.sliders, { id: payload }).checked
+      return _.find(state.sliders, { name: payload }).checked
     },
 
     getRandAttrNum({ state, commit }, payload) {
-      let slider = _.find(state.sliders, { id: payload }),
+      let slider = _.find(state.sliders, { name: payload }),
           input = slider.input
       if (slider.randomize) {
         let result = Math.random() * (input.max - input.min + input.step) + input.min;
@@ -357,7 +336,7 @@ const store = new Vuex.Store({
     },
 
     getRandAttrCol({ state, commit }, payload) {
-      let wantedSlider = state.sliders.find((slider) => slider.id === payload)
+      let wantedSlider = state.sliders.find((slider) => slider.name === payload)
       if (wantedSlider.randomize) {
         let r = Math.floor(Math.random() * 256),
           g = Math.floor(Math.random() * 256),
@@ -373,7 +352,7 @@ const store = new Vuex.Store({
     getRandAttrsChecked({state,commit}){
       state.sliders.forEach(slider => {
         if(slider.randomize && slider.subtitle !== 'height' && slider.subtitle !== 'width'){
-          commit('SET_ATTR_CHECKED', [slider.id, _.sample([true, false])])
+          commit('SET_ATTR_CHECKED', [slider.name, _.sample([true, false])])
         }
       })
     },
@@ -395,9 +374,9 @@ const store = new Vuex.Store({
     setRandomValues({ state, dispatch }) {
       state.sliders.forEach(slider => {
         if(slider.format === 'color'){
-          dispatch("getRandAttrCol", slider.id);
+          dispatch("getRandAttrCol", slider.name);
         } else {
-          dispatch("getRandAttrNum", slider.id);
+          dispatch("getRandAttrNum", slider.name);
         }
       })
     },

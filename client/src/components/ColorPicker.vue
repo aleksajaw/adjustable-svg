@@ -26,7 +26,7 @@ export default {
     picker: vueColorChrome
   },
   props: {
-    id: String,
+    name: String,
     checked: Boolean,
     color: String
   },
@@ -46,7 +46,7 @@ export default {
       this.chosenColor = c;
     },
     sendColor(c) {
-      this.SET_ATTR_VAL([this.id, c])
+      this.SET_ATTR_VAL([this.name, c])
     },
     convertColor(c) {
       return (

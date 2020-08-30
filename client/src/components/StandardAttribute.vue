@@ -13,14 +13,14 @@
 
     <p class="sliders__attr-description">
       <input
-        :id="`${slider.id}-checkbox`" 
+        :id="`${slider.name}-checkbox`" 
         class="sliders__attr--checkbox"
         type="checkbox"
         v-model="slider.checked"
         :title="'Is ' + slider.subtitle + ' value of the ' + slider.heading + ' used?'"
       >
       
-      <label :for="`${slider.id}-checkbox`">
+      <label :for="`${slider.name}-checkbox`">
         <span class="sliders__attr-description-span">
           {{ slider.subtitle }}
         </span>
@@ -76,7 +76,7 @@ export default {
   methods: {
     ...mapMutations(['SET_ATTR_CHECKED']),
     optReverseChecked(){
-      if(!this.slider.checked) this.SET_ATTR_CHECKED([this.slider.id, true])
+      if(!this.slider.checked) this.SET_ATTR_CHECKED([this.slider.name, true])
     }
   }
 };

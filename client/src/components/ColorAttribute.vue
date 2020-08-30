@@ -1,7 +1,7 @@
  <template>
   <div>
     <ColorPicker
-      :id="attr.id"
+      :name="attr.name"
       :class="{'disabled': !attr.checked}"
       v-model="attr.input"
       :color="attr.input"
@@ -12,12 +12,12 @@
     <p class="sliders__attr-description">
       <input
         class="sliders__attr--checkbox"
-        :id="`${attr.id}-checkbox`"
+        :name="`${attr.name}-checkbox`"
         type="checkbox"
         v-model="attr.checked"
       >
       
-      <label :for="`${attr.id}-checkbox`">
+      <label :for="`${attr.name}-checkbox`">
         <span class="sliders__attr-description-span">{{ attr.subtitle }}</span>
       </label>
 
@@ -29,12 +29,12 @@
     </p>
     <p :class="['sliders__attr-description', {'disabled':!attr.checked}]">
       <input
-        :id="`${attr.id}-opacity`"
+        :name="`${attr.name}-opacity`"
         class="sliders__attr--checkbox"
         type="checkbox"
         v-model="attr.opacity"
       >
-      <label :for="`${attr.id}-opacity`">
+      <label :for="`${attr.name}-opacity`">
         <span>opacity</span>
         </label>
     </p>
@@ -61,7 +61,7 @@ export default {
   methods: {
     ...mapMutations(['SET_ATTR_CHECKED']),
     optReverseChecked(){
-      if(!this.attr.checked) this.SET_ATTR_CHECKED([this.attr.id, true])
+      if(!this.attr.checked) this.SET_ATTR_CHECKED([this.attr.name, true])
     }
   },
   watch: {

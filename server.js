@@ -6,6 +6,7 @@ const cors = require('cors')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const sliderRoutes = require('./routes/api/sliders')
+const settingsTemplateRoutes = require('./routes/api/settingsTemplates')
 const path = require('path')
 
 app.use(cors())
@@ -23,6 +24,7 @@ mongoose
     .catch((err) => console.log(err))
 
 app.use('/api/sliders', sliderRoutes)
+app.use('/api/settingsTemplates', settingsTemplateRoutes)
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/dist'))

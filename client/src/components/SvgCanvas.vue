@@ -61,7 +61,7 @@ export default {
   methods: {
     ...mapActions(['isChecked']),
     getAttributeValue(payload) {
-      let wantedSlider = _.find(this.sliders, { id: payload }),
+      let wantedSlider = _.find(this.sliders, { name: payload }),
           val = (wantedSlider.input.value != undefined)
               ? wantedSlider.input.value
               : wantedSlider.input;
